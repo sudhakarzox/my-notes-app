@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Notes Frontend (Next.js + Redux + Tailwind)
 
-## Getting Started
+A modern, responsive **frontend for the FastAPI Notes App**, built using **Next.js (App Router)**, **Redux Toolkit**, and **Tailwind CSS**.  
+This app allows users to sign up, log in, and manage notes securely using JWT-based authentication.
 
-First, run the development server:
+---
+
+##  Features
+
+-  Built with **Next.js 14+** (App Router + Turbopack)
+-  **Tailwind CSS** for responsive UI and dark mode
+-  **Redux Toolkit** for global state management
+-  **JWT Authentication** with FastAPI backend
+-  CRUD operations for Notes
+-  Fully responsive design
+
+---
+
+## Tech Stack
+
+| Component | Technology |
+|------------|-------------|
+| Framework | Next.js (App Router) |
+| Styling | Tailwind CSS |
+| State Management | Redux Toolkit |
+| API | FastAPI |
+| Auth | JWT (Stored in localStorage) |
+| Language | TypeScript |
+
+
+---
+
+##  Setup Instructions
+
+###  Clone the Repository
 
 ```bash
-npm run dev
+git clone https://github.com/<your-username>/nextjs-notes-frontend.git
+cd nextjs-notes-frontend
+
+```
+### Install Dependencies
+```bash
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configure Environment Variables
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Run the Development Server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Authentication Flow
+    User signs up → /signup
+    User logs in → /
+    On successful login:
+        JWT token is saved in localStorage
+        Axios automatically attaches it to all authorized requests
+    Protected pages like /dashboard and /profile require a valid token
 
-## Learn More
+# Notes Module
+The notes page allows users to:
 
-To learn more about Next.js, take a look at the following resources:
+View all their notes
+Create a new note (title + content)
+Edit or delete existing notes
+All operations are handled through Redux async thunks calling FastAPI endpoints.    
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# API Integration (FastAPI)
+Axios instance (src/lib/api.ts) automatically attaches JWT tokens:
+```bash
+api.interceptors.request.use((config) => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+```
+## Example Endpoints
+    | Action      | Method   | Endpoint       |
+    | ----------- | -------- | -------------- |
+    | Signup      | `POST`   | `/auth/signup` |
+    | Login       | `POST`   | `/auth/login`  |
+    | Get Notes   | `GET`    | `/notes/`      |
+    | Create Note | `POST`   | `/notes/`      |
+    | Update Note | `PUT`    | `/notes/{id}`  |
+    | Delete Note | `DELETE` | `/notes/{id}`  |
 
-## Deploy on Vercel
+# Redux Flow
+    | Slice        | Purpose                                   |
+    | ------------ | ----------------------------------------- |
+    | `authSlice`  | Handles login, signup, token storage      |
+    | `notesSlice` | CRUD operations for notes                 |
+    | `store.ts`   | Combines slices and provides store to app |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# High-Level Architecture
+App Router (/app) organizes pages with layouts and routes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Redux manages auth and notes states globally.
+
+Axios handles backend communication.
+
+Tailwind ensures modern responsive UI and theming.
+
+Next.js optimizes for performance, routing, and server-side rendering.
+
+# Docker Setup
+
+```bash
+docker build -t nextjs-notes-frontend .
+docker run -p 3000:3000 nextjs-notes-frontend
+```
+
+# Connect with Backend
+```bash
+http://localhost:8000
+```
+CORS must be enabled in FastAPI:
+
+```bash
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+# Future Enhancements
+
+Add user avatar & editable profile
+
+Rich text notes with markdown support
+
+Offline-first with local storage cache
+
+Notifications for CRUD actions
+
+Improved accessibility and animations
+
+# Author
+Sudhakar P
+
+Software Developer | Cloud & Security Enthusiast
+
+ CEH | CND | AZ-305 | AZ-500 | SC-100
+
+ [p.sudhakar963@gmail.com]
