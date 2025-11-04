@@ -147,6 +147,28 @@ Notifications for CRUD actions
 
 Improved accessibility and animations
 
+## Screenshots
+signup
+<img width="1351" height="805" alt="image" src="https://github.com/user-attachments/assets/d19caa96-776e-4af0-b8eb-3425411caf00" />
+
+signin
+<img width="1349" height="810" alt="image" src="https://github.com/user-attachments/assets/cdd20e4c-e675-4437-9e9b-1f160b930f56" />
+
+dashboard
+<img width="1346" height="806" alt="image" src="https://github.com/user-attachments/assets/fdfe3cf1-7fa0-4759-bdb1-05a8111e4b8b" />
+
+<img width="1344" height="806" alt="image" src="https://github.com/user-attachments/assets/182955de-6578-4973-b9f9-f6fa4db29d38" />
+
+
+add note
+<img width="1347" height="803" alt="image" src="https://github.com/user-attachments/assets/6e4142dd-509b-4677-8dcf-f121637e7326" />
+
+view note
+<img width="1339" height="767" alt="image" src="https://github.com/user-attachments/assets/8e27ebc8-9e6c-418e-9846-02ad9361cca7" />
+
+edit note
+<img width="1350" height="810" alt="image" src="https://github.com/user-attachments/assets/0c49e201-81bb-4276-b209-5c60d69f0c7c" />
+
 # Author
 Sudhakar P
 
