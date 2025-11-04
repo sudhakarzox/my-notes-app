@@ -57,20 +57,19 @@ npm run dev
 ```
 
 # Authentication Flow
-    User signs up → /signup
-    User logs in → /
-    On successful login:
-        JWT token is saved in localStorage
-        Axios automatically attaches it to all authorized requests
-    Protected pages like /dashboard and /profile require a valid token
+- User signs up → /signup
+- User logs in → /
+- On successful login:
+    - JWT token is saved in localStorage
+    - Axios automatically attaches it to all authorized requests
+Protected pages like /dashboard and /profile require a valid token
 
 # Notes Module
 The notes page allows users to:
-
-View all their notes
-Create a new note (title + content)
-Edit or delete existing notes
-All operations are handled through Redux async thunks calling FastAPI endpoints.    
+- View all their notes
+- Create a new note (title + content)
+- Edit or delete existing notes
+- All operations are handled through Redux async thunks calling FastAPI endpoints.    
 
 
 # API Integration (FastAPI)
@@ -100,15 +99,11 @@ api.interceptors.request.use((config) => {
     | `store.ts`   | Combines slices and provides store to app |
 
 # High-Level Architecture
-App Router (/app) organizes pages with layouts and routes.
-
-Redux manages auth and notes states globally.
-
-Axios handles backend communication.
-
-Tailwind ensures modern responsive UI and theming.
-
-Next.js optimizes for performance, routing, and server-side rendering.
+- App Router (/app) organizes pages with layouts and routes.
+- Redux manages auth and notes states globally.
+- Axios handles backend communication.\
+- Tailwind ensures modern responsive UI and theming.\
+- Next.js optimizes for performance, routing, and server-side rendering.
 
 # Docker Setup
 
@@ -137,15 +132,11 @@ app.add_middleware(
 
 # Future Enhancements
 
-Add user avatar & editable profile
-
-Rich text notes with markdown support
-
-Offline-first with local storage cache
-
-Notifications for CRUD actions
-
-Improved accessibility and animations
+- Add user avatar & editable profile
+- Rich text notes with markdown support
+- Offline-first with local storage cache
+- Notifications for CRUD actions
+- Improved accessibility and animations
 
 ## Screenshots
 signup
