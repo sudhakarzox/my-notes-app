@@ -35,7 +35,7 @@ This app allows users to sign up, log in, and manage notes securely using JWT-ba
 ###  Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/nextjs-notes-frontend.git
+git clone https://github.com/sudhakarzox/nextjs-notes-frontend.git
 cd nextjs-notes-frontend
 
 ```
